@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{
+  dark: localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches),
+  scrolled: false,
+  mobileMenu: false,
+  progress: 0
+}" :class="{'dark':dark}" x-init="
+  $watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+  window.addEventListener('scroll', () => {
+    scrolled = window.scrollY > 20;
+    progress = Math.min(100, Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100));
+  }, { passive: true });
+" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Area 23 (IPG Health) Regulatory Operations case study by Omer Wasiq. Senior Reg Ops Specialist managing Veeva PromoMats submissions for JNJ, Novartis, GSK and AstraZeneca brands."/>
+  <meta name="author" content="Omer Wasiq"/>
+  <meta property="og:title" content="Area 23 IPG Health — Regulatory Ops Case Study · Omer Wasiq"/>
+  <meta property="og:description" content="Area 23 (IPG Health) Regulatory Operations case study by Omer Wasiq. Senior Reg Ops Specialist managing Veeva PromoMats submissions for JNJ, Novartis, GSK and AstraZeneca brands."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://www.omerwasiq.com/case-study.html"/>
+  <meta property="og:image" content="https://www.omerwasiq.com/me.jpeg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Area 23 IPG Health — Regulatory Ops Case Study · Omer Wasiq"/>
+  <meta name="twitter:description" content="Area 23 (IPG Health) Regulatory Operations case study by Omer Wasiq."/>
+  <meta name="twitter:image" content="https://www.omerwasiq.com/me.jpeg"/>
+  <title>Area 23 (IPG Health) — Reg Ops Case Study · Omer Wasiq</title>
+  <link rel="icon" type="image/jpeg" href="me.jpeg">
+  <link rel="apple-touch-icon" href="me.jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
+          colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;}
+    html{font-family:'DM Sans',sans-serif;}
+    h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px;}
+    body{transition:background-color .3s,color .3s;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4;}
+    .nav-link{position:relative;}
+    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .25s cubic-bezier(.4,0,.2,1);}
+    .nav-link:hover::after{width:100%;}
+    .btn-primary{position:relative;overflow:hidden;}
+    .btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1);}
+    .btn-primary:hover::after{left:160%;}
+    [x-cloak]{display:none!important;}
+    .photo-frame{position:relative;overflow:hidden;background:#e4e4e7;}
+    .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+
+    /* Reading progress */
+    .progress-bar{position:fixed;top:0;left:0;height:3px;background:#FF6B2B;z-index:100;transition:width .1s linear;}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+
+    /* Case study prose */
+    .prose-cs h2{font-family:'PT Sans',sans-serif;font-size:1.55rem;font-weight:700;margin:2.75rem 0 1rem;line-height:1.25;}
+    .prose-cs h3{font-family:'PT Sans',sans-serif;font-size:1.15rem;font-weight:700;margin:2rem 0 .6rem;line-height:1.3;color:#FF6B2B;}
+    .prose-cs p{margin:0 0 1.4rem;line-height:1.82;color:#52525b;}
+    .dark .prose-cs p{color:#a1a1aa;}
+    .prose-cs ul{margin:0 0 1.4rem 1.5rem;list-style:disc;}
+    .prose-cs li{margin-bottom:.45rem;line-height:1.7;color:#52525b;}
+    .dark .prose-cs li{color:#a1a1aa;}
+    .prose-cs blockquote{border-left:3px solid #FF6B2B;padding:.75rem 1.25rem;margin:0 0 1.8rem;background:#fff7f4;border-radius:0 8px 8px 0;}
+    .dark .prose-cs blockquote{background:#27272a;}
+    .prose-cs blockquote p{color:#52525b;font-style:italic;margin:0;}
+    .dark .prose-cs blockquote p{color:#a1a1aa;}
+    .prose-cs hr{border:none;border-top:1px solid #e4e4e7;margin:2.5rem 0;}
+    .dark .prose-cs hr{border-top-color:#27272a;}
+    .prose-cs a{color:#FF6B2B;text-decoration:underline;text-underline-offset:3px;}
+
+    /* Stat card */
+    .stat-card{border-left:3px solid #FF6B2B;}
+
+    /* Image caption */
+    .img-caption{font-size:.8rem;color:#a1a1aa;text-align:center;margin-top:.6rem;}
+
+    /* Step badge */
+    .step-badge{width:2rem;height:2rem;min-width:2rem;border-radius:50%;background:#FF6B2B;color:#fff;font-family:'PT Sans',sans-serif;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
+
+    /* card hover */
+    .card-h{transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .18s;}
+    .card-h:hover{transform:translateY(-4px);}
+  </style>
+</head>
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+
+  <!-- Reading progress bar -->
+  <div class="progress-bar" :style="`width:${progress}%`" role="progressbar" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress"></div>
+
+  <!-- ═══ NAV ═══ -->
+  <header class="fixed top-0.5 left-0 right-0 z-50 transition-all duration-300"
+    :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="index.html" class="font-display font-bold text-xl tracking-tight z-10">
+        <span class="text-zinc-900 dark:text-white">Omer</span><span class="text-accent">Wasiq</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
+        <li><a href="index.html#services" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Services</a></li>
+        <li><a href="projects.html" class="nav-link text-accent font-medium">Work</a></li>
+        <li><a href="index.html#about" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</a></li>
+
+        <li><a href="index.html#contact" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <button @click="dark=!dark"
+          class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          :aria-label="dark ? 'Light mode' : 'Dark mode'">
+          <svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg x-show="dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </button>
+        <a href="index.html#contact" class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Hire me →</a>
+        <button @click="mobileMenu=!mobileMenu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" aria-label="Toggle menu">
+          <svg x-show="!mobileMenu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg x-show="mobileMenu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div x-show="mobileMenu" x-cloak
+      x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+      class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+      <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium" role="list">
+        <li><a href="index.html#services" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Services</a></li>
+        <li><a href="projects.html" @click="mobileMenu=false" class="block text-accent font-medium">Work</a></li>
+        <li><a href="index.html#about" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">About</a></li>
+
+        <li><a href="index.html#contact" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══ CASE STUDY HEADER ═══ -->
+    <article>
+      <header class="pt-32 pb-10 max-w-4xl mx-auto px-6">
+
+        <!-- Back link -->
+        <a href="projects.html" class="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors mb-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+          Back to projects
+        </a>
+
+        <!-- Tags + date -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Regulatory Ops</span>
+          <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">Veeva PromoMats</span>
+          <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">JNJ · Novartis · GSK · AZ</span>
+          <span class="text-xs text-zinc-400 ml-1">2022 – Present</span>
+        </div>
+
+        <h1 class="reveal font-display font-bold text-4xl md:text-5xl lg:text-6xl text-zinc-900 dark:text-white leading-tight mb-6">
+          Area 23 (IPG Health) — Senior Regulatory Operations Specialist
+        </h1>
+
+        <p class="reveal d1 text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-10 max-w-2xl">
+          Delivering precision regulatory operations at one of New York's premier pharmaceutical advertising agencies — managing the complete submission lifecycle, Veeva Vault systems, DAM administration, and promotional compliance for multiple global pharma brands simultaneously.
+        </p>
+
+        <!-- Meta row -->
+        <div class="reveal d2 grid grid-cols-2 md:grid-cols-4 gap-4 py-8 border-t border-b border-zinc-100 dark:border-zinc-900">
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Agency</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">Area 23 (IPG Health)</p>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Role</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">Senior Regulatory Ops Specialist</p>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Location</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">New York, USA (Remote)</p>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Clients</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">JNJ, Novartis, GSK, AZ</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══ HERO IMAGE ═══ -->
+      <div class="max-w-6xl mx-auto px-6 mb-16">
+        <div class="reveal photo-frame w-full h-72 md:h-[480px] rounded-3xl">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1400&q=80" alt="Regulatory Operations Workflow" loading="eager"/>
+        </div>
+      </div>
+
+      <!-- ═══ RESULTS BANNER ═══ -->
+      <div class="max-w-4xl mx-auto px-6 mb-16">
+        <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+            <p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">8+</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">Years Reg Ops experience</p>
+          </div>
+          <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+            <p class="font-display font-bold text-3xl text-accent">4+</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">Global pharma brands</p>
+          </div>
+          <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+            <p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">0</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">Compliance failures on record</p>
+          </div>
+          <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+            <p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2</p>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">Top global pharma agencies</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ ARTICLE BODY ═══ -->
+      <div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+        <h2>The engagement</h2>
+        <p>Area 23, part of IPG Health — one of the world's leading healthcare advertising groups — engaged me as a Senior Regulatory Operations Specialist. Working across multiple global pharmaceutical accounts simultaneously, I serve as the regulatory operations backbone for their client teams, ensuring all promotional and medical materials meet FDA, EMA, ABPI, and EFPIA requirements before deployment.</p>
+        <p>The scope spans the complete submission lifecycle: from initial document setup, metadata tagging, and routing configuration in Veeva Vault PromoMats, through to final approval, archival, and DAM deployment. I manage multiple parallel brand campaigns with different approval timelines, stakeholder teams, and regulatory jurisdiction requirements.</p>
+
+        <blockquote>
+          <p>"Omer's attention to detail and deep understanding of Veeva PromoMats is outstanding. He managed our entire JNJ submission library with zero errors over an 18-month engagement. Truly an expert in the field."</p>
+        </blockquote>
+
+        <h2>Clients &amp; brands managed</h2>
+        <h3>Johnson &amp; Johnson</h3>
+        <p>Managing regulatory operations for three major JNJ brands: <strong>Darzalex</strong> (daratumumab, multiple myeloma), <strong>Tremfya</strong> (guselkumab, plaque psoriasis), and <strong>ICOTYDE</strong>. Each brand carries distinct submission requirements, medical/legal/regulatory (MLR) committee structures, and promotional material categories spanning digital, print, congress materials, and sales tools.</p>
+
+        <h3>Novartis</h3>
+        <p>Providing regulatory operations coverage for three Novartis brands: <strong>Cosentyx</strong> (secukinumab, psoriasis/PsA/AS), <strong>Kesimpta</strong> (ofatumumab, relapsing MS), and <strong>Leqvio</strong> (inclisiran, LDL-C reduction). Each requires careful management of indication-specific claims, black box warning placements, and multi-market adaptation workflows.</p>
+
+        <h3>GSK &amp; AstraZeneca</h3>
+        <p>Supporting <strong>Zejula</strong> (niraparib, ovarian cancer; GSK) and <strong>Fasenra</strong> (benralizumab, severe eosinophilic asthma; AstraZeneca) promotional operations, including HCP-facing materials, patient education content, and congress presentations.</p>
+
+        <h2>Core responsibilities</h2>
+        <h3>Veeva Vault PromoMats administration</h3>
+        <p>Managing the complete Veeva Vault PromoMats environment for multiple client accounts simultaneously. This includes document type configuration, custom metadata taxonomy design and maintenance, user role assignment, workflow routing logic, SOP compliance checks, and training new team members on system use. I maintain audit trails and submission libraries to ensure materials are always retrievable and compliant.</p>
+
+        <h3>Submission lifecycle management</h3>
+        <p>From submission initiation through final approval and archival, I manage every touchpoint of the material lifecycle. This includes: coordinating with scientific, legal, compliance, and marketing stakeholders; routing materials through multi-tier MLR review processes; tracking comments, revisions, and version control; and ensuring final approved materials are correctly distributed to DAM systems for deployment.</p>
+
+        <h3>DAM administration</h3>
+        <p>Administering Digital Asset Management systems to ensure approved promotional materials are correctly tagged, accessible, and version-controlled. This includes managing asset metadata, deprecation workflows for outdated materials, and access controls for different stakeholder groups across agency and client teams.</p>
+
+        <h2>Regulatory compliance framework</h2>
+        <p>All materials I manage are reviewed against applicable regulatory frameworks:</p>
+        <ul>
+          <li><strong>FDA (USA):</strong> 21 CFR Part 202 promotional labelling requirements, risk communication standards, fair balance requirements</li>
+          <li><strong>EMA (EU):</strong> Directive 2001/83/EC advertising provisions, EFPIA Code on interactions with healthcare professionals</li>
+          <li><strong>ABPI (UK):</strong> Code of Practice for the Pharmaceutical Industry, including digital/social media guidelines</li>
+          <li><strong>EFPIA:</strong> Code on the promotion of prescription-only medicines to, and interactions with, healthcare professionals</li>
+        </ul>
+
+        <h2>Master's research — downloadable thesis</h2>
+        <p>My regulatory operations expertise is underpinned by a strong scientific foundation. I hold a Master's degree in Pharmaceutical Sciences, with a thesis covering:</p>
+        <ul>
+          <li>Oral extended-release drug formulation and matrix tablet design</li>
+          <li>Osmotic oral drug delivery systems (OROS) applied to Valsartan</li>
+          <li>In vitro release kinetics and bioequivalence assessment frameworks</li>
+          <li>Clinical safety and efficacy evaluation methodology</li>
+        </ul>
+        <p>This scientific grounding gives me a unique ability to engage with complex medical content, understand pharmacological claims at a deep level, and support medico-legal review teams with scientific accuracy checks.</p>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:#fff7f4;border-radius:12px;border:1px solid #fed7c0;">
+          <p style="margin:0 0 .75rem;font-weight:600;color:#FF6B2B;">Download Master's Thesis (PDF)</p>
+          <p style="margin:0 0 1rem;font-size:.9rem;color:#52525b;">My postgraduate research in pharmaceutical sciences — covering oral extended-release formulation, osmotic drug delivery systems, and clinical evaluation frameworks.</p>
+          <a href="assets/Docs/Formulation_and_invitro_evaluation_of_oral_extende.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:#FF6B2B;color:#fff;padding:.625rem 1.25rem;border-radius:9999px;font-size:.875rem;font-weight:500;text-decoration:none;">
+            <svg style="width:1rem;height:1rem;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Download Thesis PDF
+          </a>
+        </div>
+
+        <h2>Reflections</h2>
+        <p>The most important lesson from 8+ years in pharmaceutical regulatory operations is that precision and process discipline are non-negotiable. A single metadata error or missed SOP step can delay a product launch, trigger a regulatory query, or expose an organisation to compliance risk. The best regulatory ops professionals are those who combine deep system knowledge with scientific curiosity and genuine stakeholder partnership.</p>
+        <p>Working across multiple global brands simultaneously demands a level of organisational rigour and context-switching ability that I've continually refined. Each brand has its own therapeutic area nuances, medical community expectations, and regulatory jurisdiction requirements — understanding these distinctions makes me a more effective partner to the scientific, marketing, and legal teams I support.</p>
+
+        <hr/>
+        <p><em>Interested in a regulatory operations engagement? <a href="index.html#contact">Get in touch</a> — I'm available for freelance contracts with UK and USA pharma agencies.</em></p>
+
+      </div>
+    </article>
+
+    <!-- ═══ MORE PROJECTS ═══ -->
+    <section class="bg-zinc-50 dark:bg-zinc-900/50 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="font-display font-bold text-2xl text-zinc-900 dark:text-white">More projects</h2>
+          <a href="projects.html" class="text-sm font-medium text-accent nav-link hidden md:block">View all →</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <article class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+            <div class="photo-frame w-full h-44">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="McCann Health London" loading="lazy"/>
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-2">
+                <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Regulatory Ops</span>
+              </div>
+              <a href="#">
+                <h3 class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">McCann Health London — Medical Editor</h3>
+              </a>
+              <a href="#" class="text-sm font-medium text-accent nav-link">View project →</a>
+            </div>
+          </article>
+
+          <article class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+            <div class="photo-frame w-full h-44">
+              <img src="https://images.unsplash.com/photo-1532094349884-543559853be7?w=700&q=80" alt="Veeva Vault RIM" loading="lazy"/>
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-2">
+                <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">Veeva Vault</span>
+              </div>
+              <a href="#">
+                <h3 class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Veeva Vault RIM — Regulatory Submissions</h3>
+              </a>
+              <a href="#" class="text-sm font-medium text-accent nav-link">View project →</a>
+            </div>
+          </article>
+
+        </div>
+        <div class="text-center mt-8 md:hidden">
+          <a href="projects.html" class="text-sm font-medium text-accent">View all projects →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+          <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
+          <div class="relative z-10">
+            <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">Ready to start?</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">Looking for a regulatory ops specialist?</h2>
+            <p class="text-zinc-400 max-w-md mx-auto mb-8">I'm available for freelance regulatory operations engagements with UK and USA pharma agencies. Veeva Vault expertise, promotional compliance, submission management. Let's talk.</p>
+            <a href="index.html#contact" class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors">
+              Start a project →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-zinc-100 dark:border-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> OmerWasiq. All rights reserved. <br> Developed by <a href="https://github.com/omer7262" target="_blank" class="font-bold hover:text-white transition-colors">OmerWasiq</a> • Distributed by <a href="https://github.com/omer7262" target="_blank" class="font-bold hover:text-white transition-colors">Github</a></p>
+      <p class="text-xs text-zinc-500">Built with <a href="https://tailwindcss.com" class="hover:text-accent transition-colors" rel="noopener noreferrer" target="_blank">Tailwind CSS</a> &amp; <a href="https://alpinejs.dev" class="hover:text-accent transition-colors" rel="noopener noreferrer" target="_blank">Alpine.js</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>

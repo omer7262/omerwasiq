@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en" x-data="app()" :class="{'dark':dark}" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Omer Wasiq — Senior Regulatory Operations Specialist. Expert in Veeva Vault PromoMats, Vault RIM, eCTD Publishing and pharmaceutical promotional compliance. Available for freelance engagements.">
+<meta name="keywords" content="regulatory operations, Veeva Vault PromoMats, Vault RIM, eCTD publishing, pharmaceutical compliance, FDA, EMA, ABPI, EFPIA, medical editor, regulatory submissions, promotional review">
+<meta name="author" content="Omer Wasiq">
+<meta property="og:title" content="Omer Wasiq — Senior Regulatory Operations Specialist">
+<meta property="og:description" content="8+ years delivering precision regulatory operations for global pharma brands including JNJ, Novartis, GSK and AstraZeneca.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.omerwasiq.com/">
+<meta property="og:image" content="https://www.omerwasiq.com/me.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Omer Wasiq — Senior Regulatory Operations Specialist">
+<meta name="twitter:description" content="8+ years delivering precision regulatory operations for global pharma brands including JNJ, Novartis, GSK and AstraZeneca.">
+<meta name="twitter:image" content="https://www.omerwasiq.com/me.jpeg">
+<title>Omer Wasiq — Senior Regulatory Operations Specialist</title>
+<link rel="icon" type="image/jpeg" href="me.jpeg">
+<link rel="apple-touch-icon" href="me.jpeg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
+      colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+    }
+  }
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{font-family:'DM Sans',sans-serif}
+h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif}
+body{transition:background-color .3s,color .3s}
+
+/* noise overlay */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+
+/* scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* nav underline animation */
+.nl{position:relative}
+.nl::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .22s cubic-bezier(.4,0,.2,1)}
+.nl:hover::after,.nl.on::after{width:100%}
+.nl.on{font-weight:500}
+
+/* shimmer button */
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1)}
+.shimmer:hover::after{left:160%}
+
+/* photo frames */
+.pf{overflow:hidden;background:#d4d4d8}
+.pf img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* card hover */
+.card-h{transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .18s}
+.card-h:hover{transform:translateY(-4px)}
+
+/* skill tag */
+.stag{transition:border-color .18s}
+
+[x-cloak]{display:none!important}
+</style>
+</head>
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+
+<!-- ═══ NAV ═══ -->
+<header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  :class="sc?'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5':''">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+
+    <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
+      <span class="text-zinc-900 dark:text-white">Omer</span><span class="text-accent">Wasiq</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
+      <li><a href="#services" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='services'?'on !text-zinc-900 dark:!text-white':''">Services</a></li>
+      <li><a href="#work"     class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='work'?'on !text-zinc-900 dark:!text-white':''">Work</a></li>
+      <li><a href="#clients"  class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='clients'?'on !text-zinc-900 dark:!text-white':''">Clients</a></li>
+      <li><a href="#about"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='about'?'on !text-zinc-900 dark:!text-white':''">About</a></li>
+      <li><a href="#publications" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='publications'?'on !text-zinc-900 dark:!text-white':''">Publications</a></li>
+      <li><a href="#reviews" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='reviews'?'on !text-zinc-900 dark:!text-white':''">Reviews</a></li>
+      <li><a href="#contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <!-- dark toggle -->
+      <button @click="dark=!dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
+        <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg x-show="dark"  class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+      <!-- hire me -->
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
+        Hire me <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <!-- hamburger -->
+      <button @click="mm=!mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" :aria-expanded="mm" aria-label="Toggle menu">
+        <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg x-show="mm"  class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div x-show="mm" x-cloak
+    x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+    class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+    <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
+      <li><a href="#services" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Services</a></li>
+      <li><a href="#work"     @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Work</a></li>
+      <li><a href="#clients"  @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Clients</a></li>
+      <li><a href="#about"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About</a></li>
+      <li><a href="#publications" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Publications</a></li>
+      <li><a href="#reviews" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Reviews</a></li>
+      <li><a href="#contact" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
+      <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
+        <a href="#contact" @click="mm=false" class="inline-flex shimmer bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full">Hire me →</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-1/4 left-0 w-64 h-64 bg-zinc-200/50 dark:bg-zinc-800/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+
+      <div>
+        <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">Available for work</p>
+        <h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-zinc-900 dark:text-white mb-6">
+          Hi, I'm <span class="text-accent">Omer Wasiq</span>
+        </h1>
+        <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-md mb-10">
+          <strong class="font-medium text-zinc-700 dark:text-zinc-300">Senior Regulatory Operations Specialist</strong> with 8+ years of experience in Veeva Vault PromoMats, eCTD publishing, and promotional compliance for global pharma brands.
+        </p>
+        <div class="reveal d3 flex flex-wrap gap-4">
+          <a href="#work" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
+            View my work
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="assets/Docs/Omer Wasiq Reg Ops CV.pdf" target="_blank" class="shimmer inline-flex items-center gap-2 bg-accent text-white font-medium px-7 py-3.5 rounded-full hover:bg-accent-light transition-colors text-sm">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Download CV
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Get in touch</a>
+        </div>
+        <div class="reveal d4 flex gap-8 mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900">
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">8+</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Years experience</p></div>
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">5+</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Pharma clients</p></div>
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Top agencies</p></div>
+        </div>
+      </div>
+
+      <div class="reveal d2 flex justify-center md:justify-end">
+        <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+          <div class="pf w-full h-full rounded-3xl">
+            <img src="./me.jpeg" alt="Omer Wasiq — Freelance UI/UX Designer" loading="eager">
+          </div>
+          <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Open to projects</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">What I do</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Services</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Regulatory Submission Management</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">End-to-end management of promotional and medical material submissions — from initiation through final approval, routing, publishing, and deployment across global brands.</p>
+      </article>
+
+      <article class="reveal d2 card-h group bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-zinc-800 dark:bg-zinc-700 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-white mb-3">Veeva Vault PromoMats &amp; RIM</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Expert-level document preparation, metadata tagging, QC, routing, and lifecycle management within Veeva Vault PromoMats and Vault RIM. Including DAM administration.</p>
+      </article>
+
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Promotional Compliance Review</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Rigorous review of medical and promotional materials against FDA, EMA, ABPI, and EFPIA requirements. Ensuring scientific accuracy, audit readiness, and full SOP compliance.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK ═══ -->
+<section id="work" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+      <div>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Selected work</h2>
+      </div>
+      <a href="projects.html" class="reveal d1 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors self-start sm:self-auto nl">All projects →</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent md:row-span-2">
+        <div class="pf w-full h-64 md:h-80">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80" alt="Area 23 IPG Health — Regulatory Operations" loading="lazy">
+        </div>
+        <div class="p-7">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Regulatory Ops</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Veeva PromoMats</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">JNJ · Novartis · GSK · AZ</span>
+          </div>
+          <a href="case-study.html">
+            <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Area 23 (IPG Health) — Senior Reg Ops</h3>
+          </a>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Providing regulatory operations leadership for multiple global pharmaceutical clients at one of New York's premier healthcare agencies. Managing the complete lifecycle of promotional and medical material submissions, Veeva Vault systems administration, DAM management, and cross-functional stakeholder coordination across Johnson &amp; Johnson, Novartis, GSK, and AstraZeneca brands.<br><br>Key brands: Darzalex, Tremfya, ICOTYDE (JNJ) · Cosentyx, Kesimpta, Leqvio (Novartis) · Zejula (GSK) · Fasenra (AstraZeneca).</p>
+          <a href="case-study.html" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">View case study <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card-h reveal d2 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-48">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="McCann Health London — Medical Editor" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Medical Editor</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">London</span>
+          </div>
+          <a href="case-study.html">
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">McCann Health London — Medical Editor</h3>
+          </a>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">End-to-end regulatory operations and promotional review support across JNJ and Novartis brands. Quality-checked and routed materials through Veeva PromoMats, maintained audit trails and submission libraries.</p>
+          <a href="case-study.html" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">View case study →</a>
+        </div>
+      </article>
+
+      <article class="card-h reveal d3 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-48">
+          <img src="assets/thesis_research.png" alt="Master's Research Thesis" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Research</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Pharma Sciences</span>
+          </div>
+          <a href="projects.html">
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">Master's Thesis — Drug Formulation Research</h3>
+          </a>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Postgraduate research spanning oral extended-release formulation, osmotic drug delivery systems (Valsartan), and clinical safety/efficacy evaluation. Available to view and download below.</p>
+          <a href="projects.html" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">View research →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLIENTS ═══ -->
+<section id="clients" class="py-24 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 text-center max-w-2xl mx-auto">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Partners</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6">Selected Clients & Brands</h2>
+      <p class="reveal d2 text-zinc-500 dark:text-zinc-400 leading-relaxed">A summary of global pharmaceutical organizations and brands I have proudly supported.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="reveal d1 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Johnson & Johnson</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Darzalex</span>
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Tremfya</span>
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">ICOTYDE</span>
+        </div>
+      </article>
+
+      <article class="reveal d2 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Novartis</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Cosentyx</span>
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Kesimpta</span>
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Leqvio</span>
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Pelacarsen</span>
+        </div>
+      </article>
+
+      <article class="reveal d3 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">GSK</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Zejula</span>
+        </div>
+      </article>
+
+      <article class="reveal d1 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">AstraZeneca</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Fasenra</span>
+        </div>
+      </article>
+
+      <article class="reveal d2 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Bayer</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Kerendia (Finerenone)</span>
+        </div>
+      </article>
+
+      <article class="reveal d3 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Sanofi</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Flublok</span>
+        </div>
+      </article>
+
+      <article class="reveal d1 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Takeda</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Obizur</span>
+        </div>
+      </article>
+
+      <article class="reveal d2 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Amgen</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Uplizna</span>
+        </div>
+      </article>
+
+      <article class="reveal d3 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Acadia</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Daybue</span>
+        </div>
+      </article>
+
+      <article class="reveal d1 card-h group bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-3">Ionis</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Dawnzera</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal order-2 md:order-1">
+        <div class="pf w-full aspect-square max-w-sm mx-auto rounded-3xl">
+          <img src="./me.jpeg" alt="Omer Wasiq" loading="lazy">
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2">
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Executive Profile</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white leading-tight mb-6">A bit about<br>who I am</h2>
+        <p class="reveal d2 text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+          <strong class="text-zinc-900 dark:text-white font-medium">I'm Omer Wasiq,</strong> a Regulatory Operations professional with 8+ years of experience supporting global pharmaceutical and healthcare organizations. Specialized in Veeva Vault PromoMats, Vault RIM, promotional review workflows, DAM management, metadata governance, submission lifecycle management, and cross-functional stakeholder collaboration. 
+        </p>
+        <p class="reveal d3 text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">
+          Delivered regulatory operations support for leading pharmaceutical companies including Johnson &amp; Johnson, Novartis, AstraZeneca, GSK, Bayer, Sanofi, Takeda, Amgen, Acadia, and Ionis.
+        </p>
+
+        <div class="reveal d3 mb-8">
+          <p class="text-xs font-medium text-zinc-900 dark:text-white uppercase tracking-widest mb-3">Key Achievements</p>
+          <ul class="space-y-3 text-sm text-zinc-500 dark:text-zinc-400">
+            <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Supported multiple global pharmaceutical portfolios across North America, Europe, and international markets.</span></li>
+            <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Managed end-to-end promotional review and submission workflows within Veeva Vault environments.</span></li>
+            <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Delivered DAM upload and asset governance support for Johnson &amp; Johnson programs.</span></li>
+            <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Maintained audit-ready submission repositories, metadata accuracy, and document traceability.</span></li>
+            <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Collaborated with Medical, Legal, Regulatory Affairs, and Commercial teams to accelerate compliant approvals.</span></li>
+            <li class="flex items-start gap-2.5"><svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <span>Contributed to process improvements that enhanced submission efficiency and operational consistency.</span></li>
+          </ul>
+        </div>
+
+        <div class="reveal d4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-3">Skills Matrix (Advanced Proficiency)</p>
+          <div class="flex flex-wrap gap-2" role="list" aria-label="Skills">
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Veeva Vault PromoMats</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Veeva Vault RIM</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Regulatory Operations</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Promotional Review</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Metadata Management</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">DAM Uploads & Governance</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Regulatory Compliance</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Submission Management</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Audit Readiness</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Stakeholder Management</span>
+          </div>
+          <div class="mt-6">
+            <a href="assets/Docs/Omer Wasiq Reg Ops CV.pdf" target="_blank" class="shimmer inline-flex items-center gap-2 bg-accent text-white font-medium px-6 py-2.5 rounded-full hover:bg-accent-light transition-colors text-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Download Full CV (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VISA READINESS ═══ -->
+<section id="visa-readiness" class="py-24 bg-accent text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="reveal text-xs font-medium text-white/80 tracking-widest uppercase mb-3">Executive Endorsement</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl mb-6">Global Talent Visa Readiness Highlights</h2>
+        <p class="reveal d2 text-white/90 leading-relaxed mb-8">A proven track record of exceptional contribution to internationally recognized pharmaceutical organizations and deep specialist expertise in highly regulated life sciences environments.</p>
+      </div>
+      
+      <div class="reveal d3 bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl">
+        <ul class="space-y-5 text-white/95">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-sm md:text-base leading-relaxed">Demonstrated contribution to internationally recognised pharmaceutical organizations.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-sm md:text-base leading-relaxed">Specialist expertise in highly regulated life sciences environments.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-sm md:text-base leading-relaxed">Evidence of impact across multiple global healthcare brands.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-sm md:text-base leading-relaxed">Cross-border collaboration with UK and US healthcare communications agencies.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-sm md:text-base leading-relaxed">Proven track record in regulatory technology platforms and compliance operations.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOURNEY ═══ -->
+<section id="journey" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 text-center max-w-2xl mx-auto">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Journey</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6">Experience & Education</h2>
+      <p class="reveal d2 text-zinc-500 dark:text-zinc-400 leading-relaxed">As a freelancer I have executed various projects for Clients like JNJ, AstraZeneca, GSK, Novartis, BMS and much more via Healthcare agencies in the UK and USA.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 md:gap-8">
+      
+      <!-- Professional Experience -->
+      <div class="reveal d3">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center font-display font-bold text-lg text-accent">01</div>
+          <h3 class="font-display font-bold text-xl tracking-widest uppercase text-zinc-900 dark:text-white">Professional Experience</h3>
+        </div>
+        
+        <div class="relative pl-6 border-l border-zinc-200 dark:border-zinc-800 space-y-10">
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">Area 23 (IPG Health)</h4>
+            <p class="text-sm font-medium text-accent mb-3">Senior Reg Ops Specialist • 2025 – Present</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Providing regulatory operations leadership for multiple global pharmaceutical clients. Managing the complete lifecycle of promotional submissions and Veeva Vault administration.</p>
+          </div>
+          
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">McCann Health London</h4>
+            <p class="text-sm font-medium text-accent mb-3">Medical Editor (Freelance) • 2025</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">End-to-end regulatory operations and promotional review support. Maintained metadata accuracy and submission histories for JNJ and Novartis brands.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">Novartis Healthcare Private Limited | Hyderabad</h4>
+            <p class="text-sm font-medium text-accent mb-3">Senior Associate QC Specialist • 2023 – 2024</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Assessed validity of clinical/scientific content in preclinical and clinical documents. Provided independent source data verification of clinical study reports and identified content inaccuracies. Developed factual evidence to support discrepant findings.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">Fishawack Communications Ltd | London</h4>
+            <p class="text-sm font-medium text-accent mb-3">Senior Regulatory Submission Specialist • 2021 – 2023</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Oversaw Medical-Legal Regulatory (MLR) review processes for clients, enabling successful planning and approval of over 100+ pharmaceutical messaging. Developed strong expertise in Veeva Vault PromoMats and managed electronic review processes.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">DXC.Technology | Hyderabad</h4>
+            <p class="text-sm font-medium text-accent mb-3">Regulatory Publishing Associate • 2017 – 2021</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Executed QC tasks within electronic publishing system for accurate published output. Supported senior submissions teams in maintenance of eCTD lifecycle. Achieved excellence in leading Document Level Publishing for Bristol Myers Squibb.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">Active Pharma Labs | Hyderabad</h4>
+            <p class="text-sm font-medium text-accent mb-3">QA & QC Analyst • 2016 – 2017</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Conducted quality assurance and quality control analysis, supporting internal processes and regulatory compliance within the pharmaceutical framework.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Journey -->
+      <div class="reveal d4">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center font-display font-bold text-lg text-accent">02</div>
+          <h3 class="font-display font-bold text-xl tracking-widest uppercase text-zinc-900 dark:text-white">Educational Journey</h3>
+        </div>
+        
+        <div class="relative pl-6 border-l border-zinc-200 dark:border-zinc-800 space-y-10">
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">Master's in Pharmaceutical Sciences</h4>
+            <p class="text-sm font-medium text-accent mb-3">Drug Formulation Research</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Postgraduate research spanning oral extended-release formulation and osmotic drug delivery systems. Developed a deep understanding of clinical safety and efficacy evaluation.</p>
+          </div>
+          
+          <div class="relative">
+            <div class="absolute -left-[29px] top-1.5 w-3 h-3 bg-accent rounded-full ring-4 ring-white dark:ring-zinc-950"></div>
+            <h4 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-1">Scientific Foundations</h4>
+            <p class="text-sm font-medium text-accent mb-3">Biomedical & Healthcare Research</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Foundational studies in pharmacology, regulatory frameworks, and healthcare systems, preparing the groundwork for advanced regulatory operations.</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<section id="publications" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 text-center max-w-2xl mx-auto">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Research</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6">Publications & Papers</h2>
+      <p class="reveal d2 text-zinc-500 dark:text-zinc-400 leading-relaxed">A selection of my academic research, theses, and pharmaceutical publications available for reading and download.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Paper 1 -->
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent flex flex-col h-full">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Formulation and In-vitro Evaluation of Oral Extended Release</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-grow">Comprehensive research detailing the formulation process and in-vitro testing methodologies for extended-release oral delivery systems.</p>
+        <a href="assets/Docs/Formulation_and_invitro_evaluation_of_oral_extende.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 w-full shimmer bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-medium px-5 py-2.5 rounded-xl hover:border-accent dark:hover:border-accent transition-colors text-sm mt-auto">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          Read Paper
+        </a>
+      </article>
+
+      <!-- Paper 2 -->
+      <article class="reveal d2 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent flex flex-col h-full">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Osmotic Drug Delivery System of Valsartan</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-grow">A detailed study exploring the development, optimization, and evaluation of an osmotic drug delivery system for Valsartan.</p>
+        <a href="assets/Docs/Osmotic_drug_delivery_system_of_valsartan.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 w-full shimmer bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-medium px-5 py-2.5 rounded-xl hover:border-accent dark:hover:border-accent transition-colors text-sm mt-auto">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          Read Paper
+        </a>
+      </article>
+
+      <!-- Paper 3 -->
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent flex flex-col h-full">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">To Evaluate Safety and Efficacy of Tedizolid</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-grow">An analytical review and evaluation covering the safety profile and clinical efficacy of Tedizolid in pharmacological applications.</p>
+        <a href="assets/Docs/To_evaluate_safety_and_efficacy_of_tediz.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 w-full shimmer bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-medium px-5 py-2.5 rounded-xl hover:border-accent dark:hover:border-accent transition-colors text-sm mt-auto">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          Read Paper
+        </a>
+      </article>
+
+      <!-- Paper 4 -->
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent flex flex-col h-full mt-2">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Research Publication (Ref: 726803)</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-grow">Additional research and analytical studies within the field of pharmaceutical sciences and clinical evaluation.</p>
+        <a href="assets/Docs/726803.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 w-full shimmer bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-medium px-5 py-2.5 rounded-xl hover:border-accent dark:hover:border-accent transition-colors text-sm mt-auto">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          Read Paper
+        </a>
+      </article>
+
+      <!-- Paper 5 -->
+      <article class="reveal d2 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent flex flex-col h-full mt-2">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">IJMS Publication Citation</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-grow">A published citation featured in the International Journal of Molecular Sciences (IJMS), highlighting advanced pharmaceutical research.</p>
+        <a href="assets/Global%20talent%20Documents/Citations/ijms-23-06116.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 w-full shimmer bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-medium px-5 py-2.5 rounded-xl hover:border-accent dark:hover:border-accent transition-colors text-sm mt-auto">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          Read Paper
+        </a>
+      </article>
+
+      <!-- Paper 6 -->
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent flex flex-col h-full mt-2">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Master of Pharmacy Project</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 flex-grow">Detailed thesis project and academic research completed during the Master of Pharmacy program.</p>
+        <a href="assets/Global%20talent%20Documents/Training%20Certificates/M.Pharmacy%20Project.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 w-full shimmer bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white font-medium px-5 py-2.5 rounded-xl hover:border-accent dark:hover:border-accent transition-colors text-sm mt-auto">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          Read Project
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="reviews" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Social proof</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">What clients say</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <blockquote class="reveal d1 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+        <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Omer's attention to detail and deep understanding of Veeva PromoMats is outstanding. He managed our entire JNJ submission library with zero errors over an 18-month engagement. Truly an expert in the field."</p>
+        <footer class="flex items-center gap-3">
+          <div class="pf w-10 h-10 rounded-full shrink-0"><img src="https://i.pravatar.cc/80?img=11" alt="Account Director" loading="lazy"></div>
+          <div>
+            <p class="font-medium text-sm text-zinc-900 dark:text-white">Account Director</p>
+            <p class="text-xs text-zinc-500">Area 23, IPG Health New York</p>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="reveal d2 bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-7 border border-zinc-800">
+        <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6 italic">"Omer seamlessly integrated into our team from day one. His regulatory expertise, submission accuracy, and ability to manage multiple brand timelines simultaneously is exceptional. He's our go-to specialist."</p>
+        <footer class="flex items-center gap-3">
+          <div class="pf w-10 h-10 rounded-full shrink-0"><img src="https://i.pravatar.cc/80?img=52" alt="Project Manager" loading="lazy"></div>
+          <div>
+            <p class="font-medium text-sm text-white">Project Manager</p>
+            <p class="text-xs text-zinc-500">McCann Health, London</p>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="reveal d3 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+        <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Omer brings a rare combination of scientific rigour and operational precision. His background in pharmaceutical sciences means he actually understands the content he's reviewing — a huge advantage in pharma regulatory ops."</p>
+        <footer class="flex items-center gap-3">
+          <div class="pf w-10 h-10 rounded-full shrink-0"><img src="https://i.pravatar.cc/80?img=47" alt="Regulatory Affairs Manager" loading="lazy"></div>
+          <div>
+            <p class="font-medium text-sm text-zinc-900 dark:text-white">Regulatory Affairs Manager</p>
+            <p class="text-xs text-zinc-500">Global Pharmaceutical Client</p>
+          </div>
+        </footer>
+      </blockquote>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-16 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
+
+        <div>
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Get in touch</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-5">Let's work<br>together</h2>
+          <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">I'm available for freelance regulatory operations engagements — short or long-term contracts with UK and USA healthcare agencies. Veeva Vault expertise, promotional compliance, submission management. Let's talk.</p>
+
+          <div class="reveal d3 flex flex-col gap-4">
+            <a href="mailto:omer.wasiq@aol.com" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </span>
+              <span class="text-sm">omer.wasiq@aol.com</span>
+            </a>
+            <a href="https://linkedin.com/in/omerwasiq" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </span>
+              <span class="text-sm">linkedin.com/in/omerwasiq</span>
+            </a>
+            <a href="https://omer-wasiq.vercel.app" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              </span>
+              <span class="text-sm">omer-wasiq.vercel.app</span>
+            </a>
+            <a href="assets/Docs/Omer Wasiq Reg Ops CV.pdf" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </span>
+              <span class="text-sm">Download CV (PDF)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal d2">
+          <form @submit="submitForm" novalidate>
+            <div class="flex flex-col gap-4">
+              <!-- Web3Forms Access Key & Honeypot -->
+              <input type="hidden" name="access_key" value="6fca5d08-eb98-4dba-bc73-5e78fa33e64b">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="fname" class="block text-xs font-medium text-zinc-400 mb-1.5">Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="fname" name="name" placeholder="Jane Smith" required autocomplete="name"
+                    class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors">
+                </div>
+                <div>
+                  <label for="femail" class="block text-xs font-medium text-zinc-400 mb-1.5">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="femail" name="email" placeholder="jane@company.com" required autocomplete="email"
+                    class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors">
+                </div>
+              </div>
+              <div>
+                <label for="fsubject" class="block text-xs font-medium text-zinc-400 mb-1.5">Subject</label>
+                <input type="text" id="fsubject" name="subject" placeholder="Project inquiry"
+                  class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors">
+              </div>
+              <div>
+                <label for="fmessage" class="block text-xs font-medium text-zinc-400 mb-1.5">Message <span aria-hidden="true">*</span></label>
+                <textarea id="fmessage" name="message" rows="4" placeholder="Tell me about your project..." required
+                  class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+              </div>
+
+              <!-- Web3Forms Captcha -->
+              <div class="h-captcha mt-2 flex justify-center" data-captcha="true"></div>
+
+              <button type="submit" :disabled="isSubmitting" class="shimmer w-full bg-accent text-white font-display font-bold text-sm py-3.5 rounded-xl hover:bg-accent-light transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+                <span x-text="isSubmitting ? 'Sending...' : 'Send message →'"></span>
+              </button>
+
+              <!-- Result Message -->
+              <div x-show="resultMessage" x-text="resultMessage" 
+                   class="text-sm font-medium text-center mt-1"
+                   :class="{
+                     'text-green-500': resultType === 'success',
+                     'text-red-500': resultType === 'error',
+                     'text-zinc-400': resultType === 'loading'
+                   }" style="display: none;">
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-zinc-400">© <span id="yr"></span> OmerWasiq. All rights reserved. <br> Developed by <a href="https://github.com/omer7262" target="_blank" class="font-bold hover:text-white transition-colors">OmerWasiq</a> • Distributed by <a href="https://github.com/omer7262" target="_blank" class="font-bold hover:text-white transition-colors">Github</a></p>
+    <p class="text-xs text-zinc-500">Built with
+      <a href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Tailwind CSS</a>
+      &amp;
+      <a href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Alpine.js</a>
+    </p>
+  </div>
+</footer>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script>
+function app() {
+  return {
+    dark: false,
+    mm: false,
+    sc: false,
+    s: 'hero',
+    resultMessage: '',
+    resultType: '',
+    isSubmitting: false,
+
+    async submitForm(e) {
+      e.preventDefault();
+      this.isSubmitting = true;
+      this.resultMessage = 'Please wait...';
+      this.resultType = 'loading';
+      
+      const form = e.target;
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        });
+        const result = await response.json();
+        if (response.status === 200) {
+          this.resultMessage = "Message sent successfully!";
+          this.resultType = 'success';
+          form.reset();
+        } else {
+          this.resultMessage = result.message || "Something went wrong!";
+          this.resultType = 'error';
+        }
+      } catch(error) {
+        this.resultMessage = "Something went wrong! Please try again.";
+        this.resultType = 'error';
+      }
+      this.isSubmitting = false;
+    },
+
+    init() {
+      // dark mode
+      this.dark = localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+
+      // scroll
+      window.addEventListener('scroll', () => {
+        this.sc = window.scrollY > 20;
+        this.updateSection();
+      }, { passive: true });
+
+      // reveal
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      // year
+      document.getElementById('yr').textContent = new Date().getFullYear();
+    },
+
+    updateSection() {
+      const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 60;
+      if (atBottom) { this.s = 'contact'; return; }
+      const ids = ['contact','reviews','publications','journey','about','clients','work','services','hero'];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 130) { this.s = id; return; }
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
